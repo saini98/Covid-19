@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    />
+
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+    <!-- Font Awesome -->
+    <script
+      src="https://kit.fontawesome.com/996973c893.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+Thambi+2:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- My Stylesheet -->
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- My jQuery -->
+    <script src="main.js"></script>
+
+    <!-- Chart.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+
+    <title>Covid-19 Tracker India</title>
+  </head>
+  <body>
+
+  	<!---------------------NavBar----------------------------------->
+
+<section id="user-info">
+	<div class="nav-bar">
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#"><img src="corona.png"></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <i class="fa fa-bars"></i>
+
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav ml-auto"  >
+      <li class="nav-item ">
+        <a class="nav-link" href="#top">Home </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#about">Guidelines</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#resume">Awareness</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#services">FAQ's</a>
+      </li>
+      
+      <li class="nav-item">
+        <a class="nav-link " href="#contact" tabindex="-1" aria-disabled="true">Contact</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+</div>
+
+
+    <div class="container-fluid bg-light p-5 text-center my-3">
+      <h1 class="">Covid-19 Tracker India</h1>
+      <h5 class="text-muted">
+        An opensource project to keep track of all the COVID-19 cases around the
+        world.
+      </h5>
+    </div>
+
+    <div class="container my-5">
+      <div class="row text-center">
+        <div class="col-3 text-warning">
+          <h5>Confirmed</h5>
+          <p id="confirmed"></p>
+        </div>
+        <div class="col-3 text-info">
+          <h5>Active</h5>
+          <p id="active"></p>
+        </div>
+        <div class="col-3 text-success">
+          <h5>Recovered</h5>
+          <p id="recovered"></p>
+        </div>
+        <div class="col-3 text-danger">
+          <h5>Deceased</h5>
+          <p id="deaths"></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="container bg-light p-3 my-5 text-center">
+      <h5 class="text-info">"Prevention is the Cure."</h5>
+      <p class="text-muted">Stay Indoors Stay Safe.</p>
+    </div>
+
+    <canvas id="myChart"></canvas>
+
+    <div class="container text-center my-5">
+      <h6 class="text-info">
+        *Click on the Confirmed/Recovered/Deaths buttons above to see the chart
+        individually.*
+      </h6>
+    </div>
+
+
+
+<!------------------Guidelines-------------------------------->
+<h1 style="text-align: center;">GUIDELINES</h1>
+    <div class="site-section bg-transparent" id="about">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="">
+
+            <div class="block__35630">
+              
+              <h3 class="mb-3" style="color: #df0548">Revised Discharge Policy for COVID-19 </h3>
+              			<ol>
+             						<li>Mild/very mild/pre-symptomatic cases</li>
+									<li>Moderate cases admitted to Dedicated COVID Health Centre (Oxygen beds)</li>
+									<li>Patients whose symptoms resolve within 3 days and maintains saturation above 95% for the<a href="0.pdf" download="0.pdf" style="color: #15a7a7">Details...</a></p></li>
+						</ol>
+
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="100">
+            <div class="block__35630">
+             
+              <h3 class="mb-3"  style="color: #df0548">	CPCB Guidelines for disposal of COVID 19</h3>
+             <p>In order to deal with COVID-19 pandemic, State and Central Governments have initiated various steps, which include setting up of quarantine centers/camps, Isolation wards, sample collection centers and laboratories.Following specific guidelines for management of waste generated during diagnostics and treatment of COVID-19 suspected<a href="1.pdf" download="1.pdf" style="color: #15a7a7">Details...</a></p>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="200">
+            <div class="block__35630">
+              
+              <h3 class="mb-3"  style="color: #df0548">	Guidelines for Quarantine facilities </h3>
+              <p>	Quarantine is the separation and restriction of movement or activities of persons
+					who are not ill but who are believed to have been exposed to infection, for the
+					purpose of preventing transmission of disease. Persons are usually quarantined in
+					their homes, but they may also be quarantined in community-based facilities.
+					Quarantine can be 
+				 <a href="2.pdf" download="2.pdf" style="color: #15a7a7">Details...</a></p>
+            </div>
+          </div>
+<!--
+          <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="">
+            <div class="block__35630">
+             
+              <h3 class="mb-3" style="color: #df0548"> Responsibilities of RRTs in Covid 19 </h3>
+              <b>Composition of Central RRTs</b>
+              <ul> 
+              	
+					<li>Epidemiologist</li>
+					<li>Microbiologist</li>
+					<li>Any other person deployed as per need</li>
+			</ul>
+					<b>Responsibilities of RRTs:</b>
+					Members of the central RRT will work in close coordination with state and district RRTsboth at central and local levels.
+					<a href="3.pdf" download="3.pdf" style="color: #15a7a7">Details...</a></p>
+            </div>
+          </div>
+          
+  -->
+
+        </div>
+      </div>
+    </div>
+<h1 style="text-align: center;">Guidelines to be followed on detection of suspect/confirmed COVID-19 case in a non-COVID Health Facility</h1>
+    <div class="site-section bg-transparent">
+      <div class="container">
+        <div class="row">
+         
+         
+          <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="200">
+            <div class="block__35630">
+              
+              <h3 class="mb-3" style="color: #df0548">BACKGROUND </h3>
+              <p>	here have been some instances of hospitals having closed down as few health care workers(HCW) working there turned out to be positive for COVID -19. Also some non-COVID healthfacilities have reported confirmation of COVID-19, in patients admitted for unrelated/non-respiratory illness, causing undue apprehension among healthcare workers, sometimesleading to impaired functionality of such hospitals 
+				 <a href="4.pdf" download="4.pdf" style="color: #15a7a7">Details...</a></p>
+            </div>
+          </div>
+
+           <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="200">
+            <div class="block__35630">
+              
+              <h3 class="mb-3" style="color: #df0548">Home Quarantine</h3>
+              <p>	Detection of a travel related/unrelated suspect case of novel Coronavirus Disease (COVID-
+					19) will be followed by rapid isolation of such cases in designated health facilities and line
+					listing of all contacts of such cases. Home quarantine is applicable to all such contacts of a
+					suspect or confirmed case of COVID-19.
+
+				 <a href="5.pdf" download="5.pdf" style="color: #15a7a7">Details...</a></p>
+            </div>
+          </div>
+
+           <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="200">
+            <div class="block__35630">
+              
+              <h3 class="mb-3" style="color: #df0548"> Home based care </h3>
+              <p>	Novel Corona Virus (2019-nCoV)
+						Any person(s) suggestive of 2019-nCoV, should be confined at home for a period of 14 days and avoid
+						close contact with public and other members in the family.
+						Guiding Principles for home care:-
+						<ol>
+							<li>Be informed about the illness.</li>
+							<li>Stay home, preferably isolate himself / herself in a  <a href="6.pdf" download="6.pdf" style="color: #15a7a7">Details...</a></li>
+						</ol>
+
+				</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
+ 
+
+    <!--------------RESUME---------------------------------->
+<center><h2>Awareness</h2></center>
+<div class="resume" id="resume">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6">
+				
+				
+				<ul class="timeline">
+					<li>
+						<a href="FINAL_14_03_2020_ENg.pdf" download="FINAL_14_03_2020_ENg.pdf"><img src="FINAL_14_03_2020_ENg_page-0001.png"></a> 
+						
+						</p>
+					</li>
+					<li>
+						<a href="Poster_Corona_ad_Eng.pdf" download="Poster_Corona_ad_Eng.pdf"><img src="Poster_Corona_ad_Eng_page-0001.png"></a> 
+					</li>
+				</ul>
+				
+			</div>
+		
+
+			<div class="col-md-6">
+				
+				
+				<ul class="timeline">
+					<li>
+						<a href="PostrerEnglishtraveller.pdf" download="PostrerEnglishtraveller.pdf"><img src="PostrerEnglishtraveller_page-0001.png"></a>
+					</li>
+					<li>
+						<a href="ProtectivemeasuresEng.pdf" download="ProtectivemeasuresEng.pdf"><img src="ProtectivemeasuresEng_page-0001.png"></a>
+					</li>
+				</ul>
+				
+			</div>
+			
+		</div>
+	</div>
+	
+</div>
+
+<!------------FAQ-------------------------->
+<div class="services" id="services">
+	<h1 class="text-center">FREQUENTLY ASKED QUESTIONS</h1>
+	<div class="container">
+		
+		<div class="row">
+	<div class="col-md-4">
+		<div class="services-box">
+			<b>What is corona virus</b>
+			<p>Corona viruses are a large family of viruses which may cause illness
+				in animals or humans. In humans, several coronaviruses are known
+				to cause respiratory infections ranging from the common cold to more
+				severe diseases such as Middle East Respiratory Syndrome (MERS)
+				and Severe Acute Respiratory Syndrome (SARS). The most recently
+				discovered coronavirus causes coronavirus disease COVID-19. 
+			</p>
+		</div>
+	</div>
+
+	<div class="col-md-4">
+		<div class="services-box">
+			<b>What are the symptoms of COVID-19</b>
+			<p>The most common symptoms of COVID-19 are fever, tiredness, and
+				dry cough. Some patients may have aches and pains, nasal
+				congestion, runny nose, sore throat or diarrhea. These symptoms are
+				usually mild and begin gradually.People with fever, cough and difficulty breathing should seek medical
+				attention. </p>
+		</div>
+	</div>
+
+	<div class="col-md-4">
+		<div class="services-box">
+			<b>Can the virus that causes COVID-19 be transmitted through the air? </b>
+			<p>Studies to date suggest that the virus that causes COVID-19 is mainly
+				transmitted through contact with respiratory droplets rather than
+				through the air. See previous answer on “How does COVID-19
+				spread? 
+ 			</p>
+		</div>
+	</div>
+
+	<div class="col-md-4">
+		<div class="services-box">
+			<b>Can CoVID-19 be caught from a person who has no symptoms? </b>
+			<p>The main way the disease spreads is through respiratory droplets
+				expelled by someone who is coughing. The risk of catching COVID-19
+				from someone with no symptoms at all is very low. However, many
+				people with COVID-19 experience only mild symptoms. This is
+				particularly true at the early stages of the disease. 
+ 			</p>
+		</div>
+	</div>
+
+	<div class="col-md-4">
+		<div class="services-box">
+			<b>Can I catch COVID-19 from the feces of someone with the disease?  </b>
+			<p>The risk of catching COVID-19 from the feces of an infected person
+				appears to be low. While initial investigations suggest the virus may
+				be present in feces in some cases, spread through this route is not a 
+				main feature of the outbreak. The ongoing research on the ways
+				COVID-19 is spread and will continue to share new findings. 
+ 			</p>
+		</div>
+	</div>
+
+	<div class="col-md-4">
+		<div class="services-box">
+			<b>How does COVID-19 spread</b>
+			<p>People can catch COVID-19 from others who have the virus. The
+				disease can spread from person to person through small droplets from
+				the nose or mouth which are spread when a person with COVID-19
+				coughs or exhales. These droplets land on objects and surfaces
+				around the person. Other people then catch COVID-19 by touching
+				these objects or surfaces, then touching their eyes, nose or mouth. 
+				</p>
+		</div>
+	</div> 
+</div>
+	</div>
+	
+</div>
+
+
+<!----------------------Contact Us------------------------->
+<div class="contact" id="contact">
+	<div class="container text-center">
+		<h1>Contact Us</h1>
+		<p> Central Helpline Number for corona-virus: -  +91-11-23978046</p>
+		<center>Helpline Numbers of States & Union Territories (UTs) 
+		<div class="row">
+			<div class="col-md-6">
+			<table border="2">
+				<tr>
+					<th>S. No </th>
+					<th> Name of the State </th>
+					<th>Helpline Nos. </th>
+
+				</tr>
+
+				<tr>
+					<td>1</td>
+					<td>Andhra Pradesh </td>
+					<td>0866-2410978 </td>
+				</tr>
+
+				<tr>
+					<td>2</td>
+					<td>Arunachal Pradesh </td>
+					<td>9436055743 </td>
+				</tr>
+
+				<tr>
+					<td>3</td>
+					<td>Assam </td>
+					<td>6913347770 </td>
+				</tr>
+
+				<tr>
+					<td>4</td>
+					<td>Bihar </td>
+					<td>104</td>
+				</tr>
+
+				<tr>
+					<td>5</td>
+					<td>Chhattisgarh </td>
+					<td>104</td>
+				</tr>
+
+				<tr>
+					<td>6</td>
+					<td>Goa </td>
+					<td>104</td>
+				</tr>
+
+				<tr>
+					<td>7</td>
+					<td>Gujarat </td>
+					<td>104</td>
+				</tr>
+
+				<tr>
+					<td>8</td>
+					<td>Haryana </td>
+					<td>8558893911 </td>
+				</tr>
+
+				<tr>
+					<td>9</td>
+					<td>Himachal Pradesh </td>
+					<td>104</td>
+				</tr>
+
+				<tr>
+					<td>10</td>
+					<td>Jharkhand </td>
+					<td>104</td>
+				</tr>
+				<tr>
+					<td>11</td>
+					<td>Karnataka </td>
+					<td>104</td>
+				</tr>
+				<tr>
+					<td>12</td>
+					<td>Kerala </td>
+					<td>0471-2552056  </td>
+				</tr>
+				<tr>
+					<td>13</td>
+					<td>Madhya Pradesh </td>
+					<td>104</td>
+				</tr>
+				<tr>
+					<td>14</td>
+					<td>Maharashtra </td>
+					<td>020-26127394 </td>
+				</tr>
+				<tr>
+					<td>15</td>
+					<td>Manipur </td>
+					<td>3852411668  </td>
+				</tr>
+				<tr>
+					<td>16</td>
+					<td>Meghalaya</td>
+					<td>108 </td>
+				</tr>
+				<tr>
+					<td>17</td>
+					<td>Mizoram </td>
+					<td>102</td>
+				</tr>
+				<tr>
+					<td>18</td>
+					<td>Nagaland</td>
+					<td>7005539653  </td>
+				</tr>
+				<tr>
+					<td>19</td>
+					<td>Odisha</td>
+					<td>9439994859 </td>
+				</tr>
+				<tr>
+					<td>20</td>
+					<td>Punjab </td>
+					<td>104</td>
+				</tr>
+				<tr>
+					<td>21</td>
+					<td>Rajasthan</td>
+					<td>0141-2225624 </td>
+				</tr>
+				<tr>
+					<td>22</td>
+					<td>Sikkim</td>
+					<td>104</td>
+				</tr>
+				<tr>
+					<td>23</td>
+					<td>Tamil Nadu </td>
+					<td>044-29510500 </td>
+				</tr>
+				<tr>
+					<td>24</td>
+					<td>Telengana</td>
+					<td>104</td>
+				</tr>
+				<tr>
+					<td>25</td>
+					<td>Tripura </td>
+					<td>0381-2315879 </td>
+				</tr>
+				<tr>
+					<td>26</td>
+					<td>Utrakhand</td>
+					<td>104</td>
+				</tr>
+				<tr>
+					<td>27</td>
+					<td>Uttar Pradesh </td>
+					<td>18001805145 </td>
+				</tr>
+				<tr>
+					<td>28</td>
+					<td>West Bengal</td>
+					<td>1800313444222, 03323412600</td>
+				</tr>
+			</table></div>
+			<div class="col-md-6">
+				<table border="2">
+				<tr>
+					<th>S. No </th>
+					<th>Name of Union Territory (UT) </th>
+					<th>Helpline Nos. </th>
+				</tr>
+				<tr>
+					<td>1</td>
+					<td>Andaman and Nicobar  Islands </td>
+					<td>03192-232102 </td>
+				</tr>
+				<tr>
+					<td>2</td>
+					<td>Chandigarh </td>
+					<td>9779558282 </td>
+				</tr>
+				<tr>
+					<td>3</td>
+					<td>Dadra and Nagar Haveli and Daman & Diu </td>
+					<td>104</td>
+				</tr>
+				<tr>
+					<td>4</td>
+					<td>Delhi </td>
+					<td>011-22307145 </td>
+				</tr>
+				<tr>
+					<td>5</td>
+					<td>Jammu & Kashmir </td>
+					<td>01912520982, 0194-2440283 </td>
+				</tr>
+				<tr>
+					<td>6</td>
+					<td>Ladakh </td>
+					<td>01982256462 </td>
+				</tr>
+				<tr>
+					<td>7</td>
+					<td>Lakshadweep </td>
+					<td>104</td>
+				</tr>
+			</table><br><br><br><br><img src="covid.jpg"></div>
+		</center>
+			
+		</div>
+	
+	</div>
+	
+</div>
+</section>
+    </footer>
+  </body>
+</html>
